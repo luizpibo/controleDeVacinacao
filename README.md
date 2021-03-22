@@ -1,7 +1,6 @@
 # POO
 <p>
 Repositório para projetos referentes a matéria de programação orientada a objetos - UCB 01/2021
-Professora: Joyce siqueira
 </p>
 
 <ul>
