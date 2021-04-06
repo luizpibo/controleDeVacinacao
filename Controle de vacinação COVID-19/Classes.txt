@@ -1,0 +1,64 @@
+Pessoa(String nome, Date dataNascimento, String CPF, (op)String telefone):
+	String Nome; 
+	Date DataNascimento;
+	String CPF;
+	String Telefone;
+	-Metodos
+		gets and sets
+
+Medico(String CRM):
+	String CRM;
+	-Metodos
+		gets and sets
+
+Vacina(String tipo, String lote, int qtdeEmEstoque, Date validade):
+	String Tipo;
+	String Lote;
+	Int QuantidadeEmEstoque;
+	Date Validade;
+	-Metodos
+		gets and sets
+		ChecarValidade();
+		AplicarDose();
+
+Endereco(String estado, String, cidade, String cep, int numero, (op)String Complemento):
+	String Estado;
+	String Cidade;
+	String CEP;
+	int Numero;
+	String Complemento;
+	-Metodos
+		gets and sets	
+
+PontoVacinacao(Medico medicoResponsavel, Endereco endereco):
+	Vacina Vacinas[];
+	Medico MedicoResponsavel;
+	Endereco Endereco;
+	int QuantidadeDosesAplicadas;
+	Aplicacao Aplicacoes[];
+	-Metodos
+		AdicionarVacina();
+		AdicionarAplicacao();
+		quantidadeAplicacoesTipoVacina(String tipoVacina);
+		VacinasQueIraoVencerNaSemana();
+
+Aplicacao:
+	Vacina vacina;
+	Date Data de aplicação;
+	Pessoa Paciente(Pessoa);
+	-Metodos
+		gets and sets
+		
+
+----------------------LOCAL DATE TIME -------------------
+LocalDate date = LocalDate.now();
+LocalDateTime newDateTime = LocalDateTime.now();System.out.println("DATA COMPLETA - "+newDateTime.toString());
+System.out.println("DIA DO MES - "+newDateTime.getDayOfMonth());
+System.out.println("MES DO ANO -"+newDateTime.getMonthValue());
+System.out.println("DIA DA SEMANA -"+newDateTime.getDayOfWeek());
+System.out.println("DATA MENOS 5 DIAS - "+newDateTime.minusDays(5));
+System.out.println("DATA MAIS 20 DIAS - "+newDateTime.plusDays(20));
+System.out.println("DATA APOS AS COMPARACOES - "+newDateTime.toString());
+		
+
+
