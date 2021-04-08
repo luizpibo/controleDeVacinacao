@@ -1,7 +1,7 @@
 package br.ucb.controleVacinacao.models;
 
 public class Endereco {
-	//Declarção de variaveis da classe
+	//Atributos
 	private String estado;
 	private String cidade;
 	private String cep;
@@ -10,7 +10,6 @@ public class Endereco {
 	
 	//Construtores
 	public Endereco(String estado, String cidade, String cep, int numero, String complemento) {
-		super();
 		setEstado(estado);
 		setCidade(cidade);
 		setCep(cep);

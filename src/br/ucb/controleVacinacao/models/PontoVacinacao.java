@@ -1,10 +1,11 @@
 package br.ucb.controleVacinacao.models;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class PontoVacinacao {
-	//Declarção de variaveis da classe
-	private ArrayList<Vacina> vacinas = new ArrayList<Vacina>();
+	//Atributos
+	private ArrayList<Lote> lotesVacinas = new ArrayList<Lote>();
 	private Medico medicoResponsavel;
 	private Endereco endereco;
 	private int quantidadeDosesAplicadas;
@@ -14,14 +15,24 @@ public class PontoVacinacao {
 	public PontoVacinacao(Medico medicoResponsavel, Endereco endereco) {
 		setMedicoResponsavel(medicoResponsavel);
 		setEndereco(endereco);
+		setQuantidadeDosesAplicadas(0); 
 	}
 	
 	//Gets and Sets
-	public ArrayList<Vacina> getVacinas() {
-		return vacinas;
+	
+	public ArrayList<Lote> getVacinas() {
+		return lotesVacinas;
 	}
-	public void setVacinas(ArrayList<Vacina> vacinas) {
-		this.vacinas = vacinas;
+	public ArrayList<Lote> getLotesVacinas() {
+		return lotesVacinas;
+	}
+
+	public void setLotesVacinas(ArrayList<Lote> lotesVacinas) {
+		this.lotesVacinas = lotesVacinas;
+	}
+
+	public void setVacinas(ArrayList<Lote> vacinas) {
+		this.lotesVacinas = vacinas;
 	}
 	public Medico getMedicoResponsavel() {
 		return medicoResponsavel;
@@ -49,6 +60,28 @@ public class PontoVacinacao {
 	}
 	
 	//Metodos
+	void aplicarVacina(Pessoa pessoa) {
+		for(Lote lote: getLotesVacinas()) {
+			if(lote.getDataDeChegada().equals(LocalDateTime.now())) {
+				for(Vacina vac: lote.getVacinas()) {
+					if(vac.getAberto()!=null) {
+						vac.abrirVacina();
+						getAplicacoes().add(new Aplicacao(vac,pessoa));
+						this.quantidadeDosesAplicadas++;
+						return;
+					}
+					
+				}
+			}
+		}
+	}
 	
+	void adicionarLote() {
+		ArrayList<Vacina> vacinas = new ArrayList<Vacina>();
+		for(int i=0; i<1000; i++) {
+			vacinas.add(new Vacina(i,"CORONA-VAC", LocalDateTime.now().minusDays(7)));
+		}
+		getLotesVacinas().add(new Lote(getLotesVacinas().size(),vacinas, LocalDateTime.now()));
+	}
 
 }

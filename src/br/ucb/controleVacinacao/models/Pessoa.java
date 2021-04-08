@@ -3,7 +3,7 @@ package br.ucb.controleVacinacao.models;
 import java.time.LocalDate;
 
 public class Pessoa {
-	//Declarção de variaveis da classe
+	//Atributos
 	private String nome;
 	private LocalDate dataNascimento;
 	private String cpf;
@@ -15,6 +15,11 @@ public class Pessoa {
 		setDataNascimento(dataNascimento);
 		setCpf(cpf);
 		setTelefone(telefone);
+	}
+	public Pessoa(String nome, LocalDate dataNascimento, String cpf) {
+		setNome(nome);
+		setDataNascimento(dataNascimento);
+		setCpf(cpf);
 	}
 	
 	//Gets and Sets
@@ -50,9 +55,4 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public void gerarData() {
-		
-	}
-	
-	//Metodos
 }

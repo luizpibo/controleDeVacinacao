@@ -11,15 +11,15 @@ Medico(String CRM):
 	-Metodos
 		gets and sets
 
-Vacina(String tipo, String lote, int qtdeEmEstoque, Date validade):
-	String Tipo;
-	String Lote;
-	Int QuantidadeEmEstoque;
-	Date Validade;
+Vacina(int id, String tipo, LocalDateTime fabricacao):
+	int id;	
+	String tipo;
+	LocalDateTime Validade;
+	LocalDateTime aberto = null;
 	-Metodos
 		gets and sets
-		ChecarValidade();
-		AplicarDose();
+		checarValidade12Meses();
+		abrirVacina();
 
 Endereco(String estado, String, cidade, String cep, int numero, (op)String Complemento):
 	String Estado;
@@ -31,23 +31,30 @@ Endereco(String estado, String, cidade, String cep, int numero, (op)String Compl
 		gets and sets	
 
 PontoVacinacao(Medico medicoResponsavel, Endereco endereco):
-	Vacina Vacinas[];
+	Lote lotes[];
 	Medico MedicoResponsavel;
 	Endereco Endereco;
 	int QuantidadeDosesAplicadas;
 	Aplicacao Aplicacoes[];
 	-Metodos
-		AdicionarVacina();
-		AdicionarAplicacao();
-		quantidadeAplicacoesTipoVacina(String tipoVacina);
-		VacinasQueIraoVencerNaSemana();
+		AplicarVacina();
+		AdicionarLote();
 
-Aplicacao:
+Aplicacao(Vacina vac, Pessoa cidadao):
 	Vacina vacina;
-	Date Data de aplicação;
 	Pessoa Paciente(Pessoa);
 	-Metodos
 		gets and sets
+
+
+Lote(int idLote, Vacina[] vacinas, LocalDateTime dataCheg):
+	Vacina<> vacinas;
+	int idLote;
+	LocalDateTime dataChegada;
+	-Metodos 
+		gets and sets
+		adicionarVacina
+	
 		
 
 ----------------------LOCAL DATE TIME -------------------

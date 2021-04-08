@@ -3,40 +3,34 @@ package br.ucb.controleVacinacao.models;
 import java.time.LocalDateTime;
 
 public class Vacina {
-	//Declarção de variaveis da classe
+	//Atributos
+	private int id;
 	private String tipo;
-	private String lote;
-	private int quantidadeEmEstoque;
 	private LocalDateTime fabricacao;
-	private LocalDateTime aberto;
+	private LocalDateTime aberto = null;
 	
 	//Construtores
-	public Vacina(String tipo, String lote, int quantidadeEmEstoque, LocalDateTime fabricacao) {
-		super();
+	public Vacina(int id, String tipo, LocalDateTime fabricacao) {
+		setId(id);
 		setTipo(tipo);
-		setLote(lote);
-		setQuantidadeEmEstoque(quantidadeEmEstoque);
 		setFabricacao(fabricacao);
 	}
 	
 	//Gets and Sets
+	
 	public String getTipo() {
 		return tipo;
 	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-	public String getLote() {
-		return lote;
-	}
-	public void setLote(String lote) {
-		this.lote = lote;
-	}
-	public int getQuantidadeEmEstoque() {
-		return quantidadeEmEstoque;
-	}
-	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
-		this.quantidadeEmEstoque = quantidadeEmEstoque;
 	}
 	public LocalDateTime getFabricacao() {
 		return fabricacao;
@@ -52,5 +46,12 @@ public class Vacina {
 	}
 	
 	//Metodos
+	public void abrirVacina() {
+		setAberto(LocalDateTime.now());
+	}
+	
+	public boolean checarValidade12Meses() {
+		return getFabricacao().plusMonths(12).isBefore(LocalDateTime.now());
+	}
 	
 }

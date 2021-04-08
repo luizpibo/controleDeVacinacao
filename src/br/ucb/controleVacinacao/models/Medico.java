@@ -3,7 +3,7 @@ package br.ucb.controleVacinacao.models;
 import java.time.LocalDate;
 
 public class Medico extends Pessoa{
-	//Declarção de variaveis da classe
+	//Atributos
 	private String crm;
 	
 	//Construtores
@@ -11,6 +11,7 @@ public class Medico extends Pessoa{
 		super(nome, dataNascimento, cpf, telefone);
 		setCrm(crm);
 	}
+
 	
 	//Gets and Sets
 	public String getCrm() {
