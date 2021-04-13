@@ -1,7 +1,10 @@
 package br.ucb.controleVacinacao.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import br.ucb.controleVacinacao.utils.Utils;
 
 public class PontoVacinacao {
 	//Atributos
@@ -60,13 +63,18 @@ public class PontoVacinacao {
 	}
 	
 	//Metodos
-	void aplicarVacina(Pessoa pessoa) {
+	public void aplicarVacina() {
+		//Para cada lote dentro de lotes
 		for(Lote lote: getLotesVacinas()) {
-			if(lote.getDataDeChegada().equals(LocalDateTime.now())) {
+			//Se a data de chegada do lote for 1 dia antes da data atual e ainda houverem vacinas
+			if(lote.loteValido() && lote.getQtdeDeVacinasFechadas()!=0) {
+				//Para cada vacina dentro do lote valido
 				for(Vacina vac: lote.getVacinas()) {
+					//Se a vacina nao possuir data de abertura 
 					if(vac.getAberto()!=null) {
 						vac.abrirVacina();
-						getAplicacoes().add(new Aplicacao(vac,pessoa));
+						lote.removeVacinaFechada();
+						getAplicacoes().add(new Aplicacao(vac,Utils.cadastroPessoa()));
 						this.quantidadeDosesAplicadas++;
 						return;
 					}
@@ -74,14 +82,16 @@ public class PontoVacinacao {
 				}
 			}
 		}
+		System.out.println("\n\n-- NAO TEM VACINA --\n\n");
+		return;
 	}
-	
-	void adicionarLote() {
-		ArrayList<Vacina> vacinas = new ArrayList<Vacina>();
-		for(int i=0; i<1000; i++) {
-			vacinas.add(new Vacina(i,"CORONA-VAC", LocalDateTime.now().minusDays(7)));
-		}
-		getLotesVacinas().add(new Lote(getLotesVacinas().size(),vacinas, LocalDateTime.now()));
+	public void adicionarLote() {
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("\n Quantidade de vacinas: ");
+		int qtde = scan.nextInt();
+		
+		getLotesVacinas().add(new Lote(getLotesVacinas().size(), LocalDate.now(), qtde));
 	}
 
 }

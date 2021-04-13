@@ -47,7 +47,7 @@ Aplicacao(Vacina vac, Pessoa cidadao):
 		gets and sets
 
 
-Lote(int idLote, Vacina[] vacinas, LocalDateTime dataCheg):
+Lote(int idLote, LocalDateTime dataCheg, int qtde):
 	Vacina<> vacinas;
 	int idLote;
 	LocalDateTime dataChegada;

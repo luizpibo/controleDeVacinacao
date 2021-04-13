@@ -1,16 +1,17 @@
 package br.ucb.controleVacinacao.models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Vacina {
 	//Atributos
 	private int id;
 	private String tipo;
-	private LocalDateTime fabricacao;
+	private LocalDate fabricacao;
 	private LocalDateTime aberto = null;
 	
 	//Construtores
-	public Vacina(int id, String tipo, LocalDateTime fabricacao) {
+	public Vacina(int id, String tipo, LocalDate fabricacao) {
 		setId(id);
 		setTipo(tipo);
 		setFabricacao(fabricacao);
@@ -32,10 +33,10 @@ public class Vacina {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public LocalDateTime getFabricacao() {
+	public LocalDate getFabricacao() {
 		return fabricacao;
 	}
-	public void setFabricacao(LocalDateTime fabricacao) {
+	public void setFabricacao(LocalDate fabricacao) {
 		this.fabricacao = fabricacao;
 	}
 	public LocalDateTime getAberto() {
@@ -48,10 +49,6 @@ public class Vacina {
 	//Metodos
 	public void abrirVacina() {
 		setAberto(LocalDateTime.now());
-	}
-	
-	public boolean checarValidade12Meses() {
-		return getFabricacao().plusMonths(12).isBefore(LocalDateTime.now());
 	}
 	
 }

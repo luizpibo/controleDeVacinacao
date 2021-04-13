@@ -10,7 +10,7 @@ public class Pessoa {
 	private String telefone;
 	
 	//Construtores
-	protected Pessoa(String nome, LocalDate dataNascimento, String cpf, String telefone) {
+	public Pessoa(String nome, LocalDate dataNascimento, String cpf, String telefone) {
 		setNome(nome);
 		setDataNascimento(dataNascimento);
 		setCpf(cpf);
@@ -55,4 +55,12 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ("\n- DADOS DA PESSOA -"+getNome()+
+				"\nData de nascimento - "+getDataNascimento().toString()+
+				"\nCPF - "+getCpf()+
+				"\nTelefone - "+getTelefone()+"\n");
+	}
 }
