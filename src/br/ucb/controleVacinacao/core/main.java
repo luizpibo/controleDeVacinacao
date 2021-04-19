@@ -64,10 +64,9 @@ public class main {
 				op = 0;
 			}
 		}while(op!=404);
-		
-		
-		System.out.println(pessoaTeste.toString());
 	}
+	
+	
 
 }
 /*
