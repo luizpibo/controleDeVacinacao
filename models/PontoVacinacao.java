@@ -62,16 +62,25 @@ public class PontoVacinacao {
 		this.aplicacoes = aplicacoes;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nDADOS DO PONTO DE VACINACAO\n"
+				+"MEDICO RESPONSAVEL: "+getMedicoResponsavel().toString()
+				+"\n"+getEndereco().toString()
+				+"\nQUANTIDADE DE DOSES APLICADAS: "+getQuantidadeDosesAplicadas()
+				+"\nQUANTIDADE DE LOTES: "+getLotesVacinas().size()+"\n";
+	}
+	
 	//Metodos
 	public void aplicarVacina() {
 		//Para cada lote dentro de lotes
 		for(Lote lote: getLotesVacinas()) {
 			//Se a data de chegada do lote for 1 dia antes da data atual e ainda houverem vacinas
-			if(lote.loteValido() && lote.getQtdeDeVacinasFechadas()!=0) {
+			if(lote.loteValido() && lote.getQtdeDeVacinasFechadas()>0) {
 				//Para cada vacina dentro do lote valido
 				for(Vacina vac: lote.getVacinas()) {
 					//Se a vacina nao possuir data de abertura 
-					if(vac.getAberto()!=null) {
+					if(vac.getAberto()==null) {
 						vac.abrirVacina();
 						lote.removeVacinaFechada();
 						getAplicacoes().add(new Aplicacao(vac,Utils.cadastroPessoa()));
@@ -92,6 +101,21 @@ public class PontoVacinacao {
 		int qtde = scan.nextInt();
 		
 		getLotesVacinas().add(new Lote(getLotesVacinas().size(), LocalDate.now(), qtde));
+	}
+	
+	public void mostrarAplicacoes() {
+		System.out.println("\n APLICACOES \n");
+		for(Aplicacao ap: getAplicacoes()) {
+			System.out.println("\n"+ap.toString());
+		}
+		
+	}
+	
+	public void mostrarLotes() {
+		System.out.println("\n LOTES \n");
+		for(Lote lot: getLotesVacinas()) {
+			System.out.println(lot.toString()+"\n");
+		}
 	}
 
 }

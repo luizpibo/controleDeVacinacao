@@ -24,6 +24,14 @@ public class Lote {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return ("\nID DO LOTE: "+getIdLote()
+				+"\nQUANTIDADE DE VACINAS FECHADAS: "+getQtdeDeVacinasFechadas()
+				+"\nQUANTIDADE DE VACINAS: "+getVacinas().size()
+				+"\nDATA DE CHEGADA: "+getDataDeChegada().toString());
+	}
+	
 	//gets and sets
 	
 	public ArrayList<Vacina> getVacinas() {

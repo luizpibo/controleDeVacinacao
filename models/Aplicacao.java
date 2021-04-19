@@ -21,4 +21,9 @@ public class Aplicacao {
 	public void setCidadao(Pessoa cidadao) {
 		this.cidadao = cidadao;
 	}
+	@Override
+	public String toString() {
+		return ("TIPO DA VACINA - "+getVacina().getTipo()+
+				"\n"+ getCidadao().toString());
+	}
 }

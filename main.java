@@ -43,15 +43,13 @@ public class main {
 				ponto.adicionarLote();
 				break;
 			case 3:
-				ponto.getAplicacoes().toString();
+				ponto.mostrarAplicacoes();
 				break;
 			case 4:
-				System.out.println("\n DADOS DO PONTO DE VACINACAO \n");
 				System.out.println(ponto.toString());
 				break;
 			case 5:
-				System.out.println("\n LOTES \n");
-				System.out.println(ponto.getLotesVacinas().toString());
+				ponto.mostrarLotes();
 				break;
 			case 6:
 				System.out.println("\n Quantidade de doses aplicadas \n");
@@ -65,8 +63,6 @@ public class main {
 			}
 		}while(op!=404);
 	}
-	
-	
 
 }
 /*

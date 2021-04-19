@@ -25,6 +25,16 @@ public class Endereco {
 		setNumero(numero);
 	}
 	
+	@Override
+	public String toString() {
+		return ("\nENDERECO\n"
+				+"\nESTADO: "+getEstado()
+				+"\nCIDADE: "+getCidade()
+				+"\nCEP: "+getCep()
+				+"\nNUMERO: "+getNumero()
+				+"\nCOMPLEMENTO: "+getComplemento());
+	}
+	
 	//Gets and Sets
 	public String getEstado() {
 		return estado;
@@ -56,7 +66,6 @@ public class Endereco {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	
 	
 	//Metodos
 	

@@ -12,6 +12,11 @@ public class Medico extends Pessoa{
 		setCrm(crm);
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()
+			   +"\nCRM: "+getCrm()+"\n";
+	}
 	
 	//Gets and Sets
 	public String getCrm() {
