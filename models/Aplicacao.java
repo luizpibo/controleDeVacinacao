@@ -6,24 +6,26 @@ public class Aplicacao {
 	private Pessoa cidadao;
 	
 	protected Aplicacao(Vacina vacina, Pessoa cidadao) {
-		this.vacina = vacina;
-		this.cidadao = cidadao;
+		setVacina(vacina);
+		setCidadao(cidadao);
 	}
 	public Vacina getVacina() {
 		return vacina;
 	}
-	public void setVacina(Vacina vacina) {
+	private void setVacina(Vacina vacina) {
 		this.vacina = vacina;
 	}
 	public Pessoa getCidadao() {
 		return cidadao;
 	}
-	public void setCidadao(Pessoa cidadao) {
+	private void setCidadao(Pessoa cidadao) {
 		this.cidadao = cidadao;
 	}
+
 	@Override
 	public String toString() {
 		return ("TIPO DA VACINA - "+getVacina().getTipo()+
-				"\n"+ getCidadao().toString());
+				"\n"+ getCidadao().toString()
+				"\n"+ getVacina().toString());
 	}
 }

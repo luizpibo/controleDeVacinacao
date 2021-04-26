@@ -14,8 +14,7 @@ public class Medico extends Pessoa{
 
 	@Override
 	public String toString() {
-		return super.toString()
-			   +"\nCRM: "+getCrm()+"\n";
+		return "\n - DADOS DO MEDICO - \n"+super.toString()+"\nCRM: "+getCrm()+"\n";
 	}
 	
 	//Gets and Sets
@@ -26,6 +25,4 @@ public class Medico extends Pessoa{
 	public void setCrm(String crm) {
 		this.crm = crm;
 	}
-	
-	//Metodos
 }

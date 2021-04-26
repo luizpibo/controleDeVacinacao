@@ -27,7 +27,7 @@ public class Pessoa {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	private void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -35,7 +35,7 @@ public class Pessoa {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	private void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -43,7 +43,7 @@ public class Pessoa {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	private void setNome(String nome) {
 		this.nome = nome;
 	}
 
@@ -51,7 +51,7 @@ public class Pessoa {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	private void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	
