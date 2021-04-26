@@ -62,36 +62,68 @@ public class PontoVacinacao {
 		this.aplicacoes = aplicacoes;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nDADOS DO PONTO DE VACINACAO\n"
+				+"MEDICO RESPONSAVEL: "+getMedicoResponsavel().toString()
+				+"\n"+getEndereco().toString()
+				+"\nQUANTIDADE DE DOSES APLICADAS: "+getQuantidadeDosesAplicadas()
+				+"\nQUANTIDADE DE LOTES: "+getLotesVacinas().size()+"\n";
+	}
+	
 	//Metodos
+	//Aplicando vacina
 	public void aplicarVacina() {
 		//Para cada lote dentro de lotes
 		for(Lote lote: getLotesVacinas()) {
-			//Se a data de chegada do lote for 1 dia antes da data atual e ainda houverem vacinas
-			if(lote.loteValido() && lote.getQtdeDeVacinasFechadas()!=0) {
-				//Para cada vacina dentro do lote valido
-				for(Vacina vac: lote.getVacinas()) {
-					//Se a vacina nao possuir data de abertura 
-					if(vac.getAberto()!=null) {
-						vac.abrirVacina();
-						lote.removeVacinaFechada();
-						getAplicacoes().add(new Aplicacao(vac,Utils.cadastroPessoa()));
-						this.quantidadeDosesAplicadas++;
-						return;
-					}
-					
-				}
+			//Se a data de chegada do lote for 1 dia antes da data atual ou data de hoje e ainda houverem vacinas
+			if(lote.loteValido()) {
+				aplicacoes.add(lote.usarVacina());
+				this.quantidadeDosesAplicadas++;
+				return;	
 			}
 		}
 		System.out.println("\n\n-- NAO TEM VACINA --\n\n");
 		return;
 	}
+
+	//Adicionando um novo lote
 	public void adicionarLote() {
 		Scanner scan = new Scanner(System.in);
-
-		System.out.println("\n Quantidade de vacinas: ");
-		int qtde = scan.nextInt();
-		
+		int qtde;
+		do {
+			System.out.println("\n Quantidade de vacinas: ");
+			 qtde = scan.nextInt();
+			 if(qtde>3500) 
+				 System.out.println("Quantidade invalida, digite novamente (LIMITE 3500)");
+		}while(qtde>3500);
+		//Adicionando um novo lote, com id igual a quantidade de lotes no array, 
+		//data de chegada de hj e quantidade de vacinas passadas pelo usuario
 		getLotesVacinas().add(new Lote(getLotesVacinas().size(), LocalDate.now(), qtde));
+	}
+	
+	public void mostrarAplicacoes() {
+		System.out.println("\n APLICACOES \n");
+		if(getAplicacoes().size()==0){
+			System.out.println("\nSEM APLICACOES POR ENQUANTO !!\n");
+		}else{
+			for(Aplicacao ap: getAplicacoes()) {
+				System.out.println("\n"+ap.toString());
+			}
+		}
+		
+		
+	}
+	
+	public void mostrarLotes() {
+		System.out.println("\n LOTES \n");
+		if(getLotesVacinas().size()==0){
+			System.out.println("\nSEM LOTES POR ENQUANTO !!\n");
+		}else{
+			for(Lote lot: getLotesVacinas()) {
+				System.out.println(lot.toString()+"\n");
+			}
+		}
 	}
 
 }

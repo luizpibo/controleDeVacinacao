@@ -46,6 +46,14 @@ public class Vacina {
 		this.aberto = aberto;
 	}
 	
+	@Override
+	public String toString() {
+		return	("\n	 - DADOS DA VACINA -\n"+
+				"\n ID: "+getId()+
+				"\n Data da aplicação: "+getAberto()+
+				"\n Data de fabricação: "+getFabricacao());
+	}
+	
 	//Metodos
 	public void abrirVacina() {
 		setAberto(LocalDateTime.now());

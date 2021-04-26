@@ -5,7 +5,7 @@ public class Endereco {
 	private String estado;
 	private String cidade;
 	private String cep;
-	int numero;
+	private int numero;
 	private String complemento;
 	
 	//Construtores
@@ -25,38 +25,46 @@ public class Endereco {
 		setNumero(numero);
 	}
 	
+	@Override
+	public String toString() {
+		return ("\nENDERECO\n"
+				+"\nESTADO: "+getEstado()
+				+"\nCIDADE: "+getCidade()
+				+"\nCEP: "+getCep()
+				+"\nNUMERO: "+getNumero()
+				+"\nCOMPLEMENTO: "+getComplemento());
+	}
+	
 	//Gets and Sets
 	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(String estado) {
+	private void setEstado(String estado) {
 		this.estado = estado;
 	}
 	public String getCidade() {
 		return cidade;
 	}
-	public void setCidade(String cidade) {
+	private void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 	public String getCep() {
 		return cep;
 	}
-	public void setCep(String cep) {
+	private void setCep(String cep) {
 		this.cep = cep;
 	}
 	public int getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
+	private void setNumero(int numero) {
 		this.numero = numero;
 	}
 	public String getComplemento() {
 		return complemento;
 	}
-	public void setComplemento(String complemento) {
+	private void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	
-	//Metodos
 	
 }

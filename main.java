@@ -65,7 +65,6 @@ public class main {
 	}
 
 }
-
 /*
 LocalDate date = LocalDate.now();
 LocalDateTime newDateTime = LocalDateTime.now();
